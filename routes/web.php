@@ -78,3 +78,10 @@ Route::post('payments/notification', [\App\Http\Controllers\Frontend\PaymentCont
 Route::get('payments/completed', [\App\Http\Controllers\Frontend\PaymentController::class, 'completed']);
 Route::get('payments/failed', [\App\Http\Controllers\Frontend\PaymentController::class, 'failed']);
 Route::get('payments/unfinish', [\App\Http\Controllers\Frontend\PaymentController::class, 'unfinish']);
+
+Route::group(['middleware' => ['auth', 'is_warehouse'], 'prefix' => 'gudang', 'as' => 'gudang.'], function () {
+    // admin
+    Route::get('dashboard', [\App\Http\Controllers\Gudang\DashboardGudangController::class, 'index'])->name('dashboard');
+    Route::resource('categories', \App\Http\Controllers\Gudang\CategoryGudangController::class);
+    Route::resource('products', \App\Http\Controllers\Gudang\ProductGudangController::class);
+});

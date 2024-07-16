@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Data Produk</h3>
-                            <a href="{{ route('admin.products.create') }}" class="btn btn-success shadow-sm float-right"> <i
+                            <a href="{{ route('gudang.products.create') }}" class="btn btn-success shadow-sm float-right"> <i
                                     class="fa fa-plus"></i> Tambah </a>
                         </div>
                         <!-- /.card-header -->
@@ -40,12 +40,12 @@
                                                 <td>
                                                     @if (auth()->user()->is_admin)
                                                         <div class="btn-group btn-group-sm">
-                                                            <a href="{{ route('admin.products.edit', $product) }}"
+                                                            <a href="{{ route('gudang.products.edit', $product) }}"
                                                                 class="btn btn-sm btn-primary">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
                                                             <form onclick="return confirm('are you sure !')"
-                                                                action="{{ route('admin.products.destroy', $product) }}"
+                                                                action="{{ route('gudang.products.destroy', $product) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
@@ -55,7 +55,7 @@
                                                         </div>
                                                     @elseif(auth()->user()->is_warehouse)
                                                         <div class="btn-group btn-group-sm">
-                                                            <a href="{{ route('admin.products.edit', $product) }}"
+                                                            <a href="{{ route('gudang.products.edit', $product) }}"
                                                                 class="btn btn-sm btn-primary">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Gudang;
 
 use App\Models\Product;
 use App\Models\Category;
@@ -15,7 +15,7 @@ use App\Models\ProductAttributeValue;
 use App\Http\Requests\Admin\ProductRequest;
 use Illuminate\Support\Facades\Session;
 
-class ProductController extends Controller
+class ProductGudangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::orderBy('name', 'ASC')->get();
-        return view('admin.products.index', compact('products'));
+        return view('gudang.products.index', compact('products'));
     }
 
     /**
@@ -35,7 +35,7 @@ class ProductController extends Controller
         $types = Product::types();
         $configurable_attributes = $this->_getConfigurableAttributes();
 
-        return view('admin.products.create', compact('categories', 'types', 'configurable_attributes'));
+        return view('gudang.products.create', compact('categories', 'types', 'configurable_attributes'));
     }
 
     private function _getConfigurableAttributes()
@@ -138,7 +138,7 @@ class ProductController extends Controller
             }
         );
 
-        return redirect()->route('admin.products.edit', $product)->with([
+        return redirect()->route('gudang.products.edit', $product)->with([
             'message' => 'Berhasil di buat !',
             'alert-type' => 'success'
         ]);
@@ -161,8 +161,9 @@ class ProductController extends Controller
         $statuses = Product::statuses();
         $types = Product::types();
         $configurable_attributes = $this->_getConfigurableAttributes();
-
-        return view('admin.products.edit', compact('product', 'categories', 'statuses', 'types', 'configurable_attributes'));
+        $inventory = DB::table('product_inventories')->where('product_id', $product->id)->first();
+        // dd($inventory);
+        return view('gudang.products.edit', compact('product', 'categories', 'statuses', 'types', 'configurable_attributes', 'inventory'));
     }
 
     private function _updateProductVariants($request)
@@ -183,30 +184,38 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
-        $saved = false;
-        $saved = DB::transaction(
-            function () use ($product, $request) {
-                $categoryIds = !empty($request['category_id']) ? $request['category_id'] : [];
-                $product->update($request->validated());
-                $product->categories()->sync($categoryIds);
+        $saved = DB::transaction(function () use ($product, $request) {
+            $categoryIds = !empty($request['category_id']) ? $request['category_id'] : [];
+            $product->update($request->all());
+            $product->categories()->sync($categoryIds);
 
-                if ($product->type == 'configurable') {
-                    $this->_updateProductVariants($request);
+            if ($product->type == 'configurable') {
+                $this->_updateProductVariants($request);
+            } else {
+                // Update existing or create new product inventory
+                $currentInventory = DB::table('product_inventories')->where('product_id', $product->id)->first();
+                $newQty = $request->input('current_qty') + $request->input('additional_qty');
+                // dd($newQty);
+                // dd($currentInventory);
+                if ($currentInventory) {
+                    DB::table('product_inventories')->where('product_id', $product->id)->update(['qty' => $newQty]);
                 } else {
-                    ProductInventory::updateOrCreate(['product_id' => $product->id], ['qty' => $request['qty']]);
+                    DB::table('product_inventories')->create(['product_id' => $product->id, 'qty' => $newQty]);
                 }
-
-                return true;
             }
-        );
 
-        return redirect()->route('admin.products.index')->with([
-            'message' => 'Berhasil di ganti !',
+            return true;
+        });
+
+        return redirect()->route('gudang.products.index')->with([
+            'message' => 'Berhasil diubah!',
             'alert-type' => 'info'
         ]);
     }
+
+
 
     /**
      * Remove the specified resource from storage.
