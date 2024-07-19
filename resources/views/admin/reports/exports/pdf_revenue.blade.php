@@ -2,7 +2,7 @@
 <html>
   	<head>
 		<meta charset="utf-8">
-		<title>Revenue Reprot</title>
+		<title>Laporan Pendapatan</title>
 		<style type="text/css">
 			table {
 				width: 100%;
@@ -34,12 +34,12 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Date</th>
-					<th>Orders</th>
-					<th>Gross Revenue</th>
-					<th>Taxes</th>
-					<th>Shipping</th>
-					<th>Net Revenue</th>
+				<th>Tanggal</th>
+			<th>Pesanan</th>
+			<th>Pendapatan Kotor</th>
+			<th>Pajak</th>
+			<th>Pengiriman</th>
+			<th>Pendapatan Bersih</th>
 				</tr>
 			</thead>
 			<tbody>

@@ -4,10 +4,10 @@
 	<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: url({{ asset('themes/ezone/assets/img/bg/breadcrumb.jpg') }})">
 		<div class="container-fluid">
 			<div class="breadcrumb-content text-center">
-				<h2>My Order</h2>
+				<h2>Pesanan Saya</h2>
 				<ul>
 					<li><a href="{{ url('/') }}">home</a></li>
-					<li>my order</li>
+					<li>Pesanan Saya</li>
 				</ul>
 			</div>
 		</div>
@@ -20,7 +20,7 @@
 				</div>
 				<div class="col-lg-9">
 					<div class="d-flex justify-content-between">
-						<h2 class="text-dark font-weight-medium">Order ID #{{ $order->code }}</h2>
+						<h2 class="text-dark font-weight-medium">Id Pesanan #{{ $order->code }}</h2>
 					</div>
 					<div class="row pt-5">
 						<div class="col-xl-4 col-lg-4">
@@ -66,10 +66,10 @@
 							<thead>
 								<tr>
 									<th>#</th>
-									<th>Item</th>
-									<th>Description</th>
-									<th>Quantity</th>
-									<th>Unit Cost</th>
+									<th>Produk</th>
+									<th>Deskripsi</th>
+									<th>Jumlah</th>
+									<th>Harga</th>
 									<th>Total</th>
 								</tr>
 							</thead>
@@ -107,7 +107,7 @@
 									</tr>
 								@empty
 									<tr>
-										<td colspan="6">Order item not found!</td>
+										<td colspan="6">Pesanan Tidak Ada!</td>
 									</tr>
 								@endforelse
 							</tbody>

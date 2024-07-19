@@ -2,7 +2,7 @@
 <html>
   	<head>
 		<meta charset="utf-8">
-		<title>Inventory Report</title>
+		<title>Laporan Inventori</title>
 		<style type="text/css">
 			table {
 				width: 100%;
@@ -33,14 +33,14 @@
 		</style>
 	</head>
   	<body>
-		<h2>Inventory Report</h2>
+		<h2>Laporan Inventori</h2>
 		<hr>
 		<table>
 			<thead>
 				<tr>
-				<th>Name</th>
-				<th>SKU</th>
-				<th>Stock</th>
+		<th>Nama</th>
+		<th>SKU</th>
+		<th>Stok</th>
 				</tr>
 			</thead>
 			<tbody>

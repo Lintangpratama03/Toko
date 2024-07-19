@@ -2,7 +2,7 @@
 <html>
   	<head>
 		<meta charset="utf-8">
-		<title>Product Report</title>
+		<title>Laporan Produk</title>
 		<style type="text/css">
 			table {
 				width: 100%;
@@ -34,12 +34,12 @@
 		<table>
 			<thead>
 				<tr>
-				<th>Name</th>
-				<th>SKU</th>
-				<th>Items Sold</th>
-				<th>Net Revenue</th>
-				<th>Orders</th>
-				<th>Stock</th>
+		<th>Nama</th>
+		<th>SKU</th>
+		<th>Produk Terjual</th>
+		<th>Pendapatan Bersih</th>
+		<th>Pesanan</th>
+		<th>Stok</th>
 				</tr>
 			</thead>
 			<tbody>

@@ -18,14 +18,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-
                     <div class="alert alert-info">
-                        Sample table page
+                        Daftar User
                     </div>
-
                     <div class="card">
                         <div class="card-body p-0">
-
                             <table class="table">
                                 <thead>
                                     <tr>

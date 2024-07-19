@@ -9,7 +9,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h2 class="text-dark font-weight-medium">Order ID #{{ $order->code }}</h2>
+                <h2 class="text-dark font-weight-medium">Id Pesanan #{{ $order->code }}</h2>
                 <div class="btn-group float-right">
                     <button class="btn btn-sm btn-secondary">
                         <i class="mdi mdi-content-save"></i> Save</button>
@@ -21,7 +21,7 @@
               <div class="card-body">       
                 <div class="row pt-2 mb-3">
                     <div class="col-lg-4">
-                        <p class="text-dark" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Billing Address</p>
+                        <p class="text-dark" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Alamat Penagihan</p>
                         <address>
                             {{ $order->customer_full_name }}
                              {{ $order->customer_address1 }}
@@ -32,7 +32,7 @@
                         </address>
                     </div>
                     <div class="col-lg-4">
-                        <p class="text-dark" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Shipment Address</p>
+                        <p class="text-dark" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Alamat Pengiriman</p>
                         <address>
                             {{ $order->shipment->first_name }} {{ $order->shipment->last_name }}
                                 {{ $order->shipment->address1 }}
@@ -43,7 +43,7 @@
                         </address>
                     </div>
                     <div class="col-lg-4">
-                        <p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Details</p>
+                        <p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Detail</p>
                         <address>
                             ID: <span class="text-dark">#{{ $order->code }}</span>
                             <br> {{ $order->order_date }}
@@ -61,10 +61,10 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Item</th>
-                                <th>Description</th>
-                                <th>Quantity</th>
-                                <th>Unit Cost</th>
+                                <th>Produk</th>
+                                <th>Deskripsi</th>
+                                <th>Kuantitas</th>
+                                <th>Harga Produk</th>
                                 <th>Total</th>
                             </tr>
                         </thead>
@@ -102,7 +102,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6">Order item not found!</td>
+                                    <td colspan="6">Pesanan Tidak Ditemukan!</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -113,10 +113,10 @@
                                 <li class="mid pb-3 text-dark">Subtotal
                                     <span class="d-inline-block float-right text-default">Rp{{ number_format($order->base_total_price,0,",",".") }}</span>
                                 </li>
-                                <li class="mid pb-3 text-dark">Tax(10%)
+                                <li class="mid pb-3 text-dark">Pajak
                                     <span class="d-inline-block float-right text-default">Rp{{ number_format($order->tax_amount,0,",",".") }}</span>
                                 </li>
-                                <li class="mid pb-3 text-dark">Shipping Cost
+                                <li class="mid pb-3 text-dark">Biaya Pengiriman
                                     <span class="d-inline-block float-right text-default">Rp{{ number_format($order->shipping_cost,0,",",".") }}</span>
                                 </li>
                                 <li class="pb-3 text-dark">Total
@@ -125,31 +125,31 @@
                             </ul>
                             @if (!$order->trashed())
                                     @if ($order->isPaid() && $order->isConfirmed())
-                                        <a href="{{ url('admin/shipments/'. $order->shipment->id .'/edit')}}" class="btn btn-block mt-2 btn-lg btn-primary btn-pill"> Procced to Shipment</a>
+                                        <a href="{{ url('admin/shipments/'. $order->shipment->id .'/edit')}}" class="btn btn-block mt-2 btn-lg btn-primary btn-pill"> Proses Pengiriman</a>
                                     @endif
 
                                     @if (in_array($order->status, [\App\Models\Order::CREATED, \App\Models\Order::CONFIRMED]))
-                                        <a href="{{ url('admin/orders/'. $order->id .'/cancel')}}" class="btn btn-block mt-2 btn-lg btn-warning btn-pill"> Cancel</a>
+                                        <a href="{{ url('admin/orders/'. $order->id .'/cancel')}}" class="btn btn-block mt-2 btn-lg btn-warning btn-pill"> Batalkan</a>
                                     @endif
 
                                     @if ($order->isDelivered())
                                         <a href="#" class="btn btn-block mt-2 btn-lg btn-success btn-pill" onclick="event.preventDefault();
-                                        document.getElementById('complete-form-{{ $order->id }}').submit();"> Mark as Completed</a>		
+                                        document.getElementById('complete-form-{{ $order->id }}').submit();"> Tandai Selesai</a>		
                                         <form class="d-none" method="POST" action="{{ route('admin.orders.complete', $order) }}" id="complete-form-{{ $order->id }}">
                                             @csrf
                                         </form>				
                                     @endif
 
                                     @if (!in_array($order->status, [\App\Models\Order::DELIVERED, \App\Models\Order::COMPLETED]))
-                                        <a href="#" class="btn btn-block mt-2 btn-lg btn-secondary btn-pill delete" order-id="{{ $order->id }}"> Remove</a>	
+                                        <a href="#" class="btn btn-block mt-2 btn-lg btn-secondary btn-pill delete" order-id="{{ $order->id }}"> Hapus</a>	
                                         <form action="{{ route('admin.orders.destroy',$order) }}" method="post" id="delete-form-{{ $order->id }}" class="d-none">
                                             @csrf 
                                             @method('delete')
                                         </form>	
                                     @endif
                                 @else
-                                    <a href="{{ url('admin/orders/restore/'. $order->id)}}" class="btn btn-block mt-2 btn-lg btn-outline-secondary btn-pill restore">Restore</a>
-                                    <a href="#" class="btn btn-block mt-2 btn-lg btn-danger btn-pill delete" order-id="{{ $order->id }}"> Remove Permanently</a>
+                                    <a href="{{ url('admin/orders/restore/'. $order->id)}}" class="btn btn-block mt-2 btn-lg btn-outline-secondary btn-pill restore">Pulihkan</a>
+                                    <a href="#" class="btn btn-block mt-2 btn-lg btn-danger btn-pill delete" order-id="{{ $order->id }}"> Hapus Permanen</a>
                                     <form action="{{ route('admin.orders.destroy',$order) }}" method="post" id="delete-form-{{ $order->id }}" class="d-none">
                                             @csrf 
                                             @method('delete')

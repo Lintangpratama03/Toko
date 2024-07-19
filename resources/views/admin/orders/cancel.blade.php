@@ -6,18 +6,18 @@
         <div class="col-lg-6">
             <div class="card card-default">
                 <div class="card-header card-header-border-bottom">
-                    <h2>Cancel Order #{{ $order->code }}</h2>
+                    <h2>Pesanan Batal #{{ $order->code }}</h2>
                 </div>
                 <div class="card-body">
                 <form action="{{ route('admin.orders.cancel', $order) }}" method="POST">
                     @csrf 
                     @method('put')
                     <div class="form-group">
-                        <label for="cancellation_note">Cancellation Note</label>
+                        <label for="cancellation_note">Catatan Pembatalan</label>
                         <textarea name="cancellation_note" id="cancellation_note" cols="30" rows="4" class="form-control">{{ old('cancellation_note') }}</textarea>
                     </div>
                     <div class="form-footer pt-5 border-top">
-                        <button type="submit" class="btn btn-success">Cancel Order</button>
+                        <button type="submit" class="btn btn-success">batal pesan</button>
                         <a href="{{ url('admin/orders') }}" class="btn btn-dark">Kembali</a>
                     </div>
                     </form>
@@ -27,7 +27,7 @@
         <div class="col-lg-6">
             <div class="card card-default">
                 <div class="card-header card-header-border-bottom">
-                    <h2>Detail Order</h2>
+                    <h2>Detail Pesanan</h2>
                 </div>
                 <div class="card-body">
 					<div class="row mb-2">
@@ -58,8 +58,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Item</th>
-                                <th>Qty</th>
+                                <th>Produk</th>
+                                <th>Kuantitas</th>
                                 <th>Total</th>
                             </tr>
                         </thead>
@@ -73,7 +73,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6">Order item not found!</td>
+                                    <td colspan="6">Pesanan tidak ditemukan!</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -82,13 +82,13 @@
                     <div class="row justify-content-end">
                         <div class="col-lg-5 col-xl-6 col-xl-3 ml-sm-auto">
                             <ul class="list-unstyled mt-4">
-                                <li class="mid pb-3 text-dark">Subtotal
+                                <li class="mid pb-3 text-dark">Sub total
                                     <span class="d-inline-block float-right text-default">{{ $order->base_total_price }}</span>
                                 </li>
-                                <li class="mid pb-3 text-dark">Tax(10%)
+                                <li class="mid pb-3 text-dark">Pajak
                                     <span class="d-inline-block float-right text-default">{{ $order->tax_amount }}</span>
                                 </li>
-                                <li class="mid pb-3 text-dark">Shipping Cost
+                                <li class="mid pb-3 text-dark">Harga Pengiriman
                                     <span class="d-inline-block float-right text-default">{{ $order->shipping_cost }}</span>
                                 </li>
                                 <li class="pb-3 text-dark">Total

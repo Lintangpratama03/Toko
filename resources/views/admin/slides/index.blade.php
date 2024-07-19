@@ -20,11 +20,11 @@
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Title</th>
-                        <th>Image</th>
-                        <th>Position</th>
+                        <th>Judul</th>
+                        <th>Gambar</th>
+                        <th>Posisi</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                     </thead>
                     <tbody>

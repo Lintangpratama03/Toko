@@ -43,7 +43,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-circle nav-icon"></i>
                         <p>
-                            Managemen Produk
+                            Kelola Produk
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -66,7 +66,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-circle nav-icon"></i>
                         <p>
-                            Managemen Order
+                            Kelola Pesanan
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -74,7 +74,7 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.orders.index') }}" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
-                                <p>Order</p>
+                                <p>Pesanan</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -89,7 +89,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-circle nav-icon"></i>
                         <p>
-                            Managemen Report
+                            Kelola Laporan
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -109,7 +109,7 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.reports.inventory') }}" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
-                                <p>Inventory</p>
+                                <p>Inventori</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -125,7 +125,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-circle nav-icon"></i>
                         <p>
-                            Managemen Produk
+                            Kelola Stok Produk
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -133,7 +133,7 @@
                         <li class="nav-item">
                             <a href="{{ route('gudang.products.index') }}" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
-                                <p>Produk</p>
+                                <p> Stok Produk</p>
                             </a>
                         </li>
                     </ul>
