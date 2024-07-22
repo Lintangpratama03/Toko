@@ -21,14 +21,20 @@
                                 <div class="form-group row border-bottom pb-4">
                                     <label for="type" class="col-sm-2 col-form-label">Tipe Kategori</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control product-type" name="type" id="type">
+                                        <!-- Hidden select input -->
+                                        <select class="form-control product-type d-none" name="type" id="type">
                                             @foreach ($types as $value => $type)
                                                 <option {{ old('type') == $value ? 'selected' : null }}
                                                     value="{{ $value }}"> {{ $type }}</option>
                                             @endforeach
                                         </select>
+
+                                        <!-- Visible display of the selected type (optional) -->
+                                        <input type="text" class="form-control"
+                                            value="{{ $types[old('type', key($types))] }}" readonly>
                                     </div>
                                 </div>
+
                                 <div class="form-group row border-bottom pb-4">
                                     <label for="sku" class="col-sm-2 col-form-label">SKU</label>
                                     <div class="col-sm-10">

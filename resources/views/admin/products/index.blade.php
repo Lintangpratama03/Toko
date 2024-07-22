@@ -21,7 +21,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>SKU</th>
-                                            <th>Tipe</th>
+                                            {{-- <th>Tipe</th> --}}
                                             <th>Nama Produk</th>
                                             <th>Harga</th>
                                             <th>Status</th>
@@ -33,7 +33,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $product->sku }}</td>
-                                                <td>{{ $product->type }}</td>
+                                                {{-- <td>{{ $product->type }}</td> --}}
                                                 <td>{{ $product->name }}</td>
                                                 <td>{{ number_format($product->price) }}</td>
                                                 <td>{{ $product->statusLabel() }}</td>
