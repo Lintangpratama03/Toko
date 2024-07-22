@@ -55,6 +55,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('admin.weight_units.index') }}" class="nav-link">
+                                <i class="fa fa-balance-scale nav-icon"></i>
+                                <p>Satuan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('admin.products.index') }}" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Produk</p>
@@ -85,7 +91,6 @@
                         </li>
                     </ul>
                 </li>
-              
             @elseif(auth()->user()->is_warehouse)
                 <!-- <li class="nav-item">
                     <a href="#" class="nav-link">

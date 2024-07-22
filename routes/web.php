@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\WeightUnitController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,7 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth', 'is_admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     // admin
+    Route::resource('weight_units', WeightUnitController::class);
     Route::get('users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
     Route::get('profile', [\App\Http\Controllers\Admin\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('profile.update');
@@ -40,8 +41,6 @@ Route::group(['middleware' => ['auth', 'is_admin'], 'prefix' => 'admin', 'as' =>
     Route::get('orders/{order:id}/cancel', [\App\Http\Controllers\Admin\OrderController::class, 'cancel'])->name('orders.cancels');
     Route::put('orders/cancel/{order:id}', [\App\Http\Controllers\Admin\OrderController::class, 'doCancel'])->name('orders.cancel');
     Route::resource('shipments', \App\Http\Controllers\Admin\ShipmentController::class);
-
-   
 });
 
 
@@ -70,6 +69,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profile',  [\App\Http\Controllers\Auth\ProfileController::class, 'index']);
     Route::put('profile', [\App\Http\Controllers\Auth\ProfileController::class, 'update']);
 });
+
+
 
 Route::post('payments/notification', [\App\Http\Controllers\Frontend\PaymentController::class, 'notification']);
 Route::get('payments/completed', [\App\Http\Controllers\Frontend\PaymentController::class, 'completed']);

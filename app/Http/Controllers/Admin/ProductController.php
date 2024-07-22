@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Models\ProductAttributeValue;
 use App\Http\Requests\Admin\ProductRequest;
+use App\Models\WeightUnit;
 use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
@@ -34,8 +35,8 @@ class ProductController extends Controller
         $categories = Category::orderBy('name', 'ASC')->get(['name', 'id']);
         $types = Product::types();
         $configurable_attributes = $this->_getConfigurableAttributes();
-
-        return view('admin.products.create', compact('categories', 'types', 'configurable_attributes'));
+        $weightUnits = WeightUnit::orderBy('name', 'ASC')->get();
+        return view('admin.products.create', compact('categories', 'types', 'configurable_attributes', 'weightUnits'));
     }
 
     private function _getConfigurableAttributes()
@@ -123,26 +124,26 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductRequest $request)
-    {
-        $product = DB::transaction(
-            function () use ($request) {
-                $categoryIds = !empty($request['category_id']) ? $request['category_id'] : [];
-                $product = Product::create($request->validated() + ['user_id' => auth()->id()]);
-                $product->categories()->sync($categoryIds);
+    // public function store(ProductRequest $request)
+    // {
+    //     $product = DB::transaction(
+    //         function () use ($request) {
+    //             $categoryIds = !empty($request['category_id']) ? $request['category_id'] : [];
+    //             $product = Product::create($request->validated() + ['user_id' => auth()->id()]);
+    //             $product->categories()->sync($categoryIds);
 
-                if ($request['type'] == 'configurable') {
-                    $this->_generateProductVariants($product, $request);
-                }
-                return $product;
-            }
-        );
+    //             if ($request['type'] == 'configurable') {
+    //                 $this->_generateProductVariants($product, $request);
+    //             }
+    //             return $product;
+    //         }
+    //     );
 
-        return redirect()->route('admin.products.edit', $product)->with([
-            'message' => 'Berhasil di buat !',
-            'alert-type' => 'success'
-        ]);
-    }
+    //     return redirect()->route('admin.products.edit', $product)->with([
+    //         'message' => 'Berhasil di buat !',
+    //         'alert-type' => 'success'
+    //     ]);
+    // }
 
     /**
      * Display the specified resource.
@@ -161,8 +162,8 @@ class ProductController extends Controller
         $statuses = Product::statuses();
         $types = Product::types();
         $configurable_attributes = $this->_getConfigurableAttributes();
-
-        return view('admin.products.edit', compact('product', 'categories', 'statuses', 'types', 'configurable_attributes'));
+        $weightUnits = WeightUnit::orderBy('name', 'ASC')->get();
+        return view('admin.products.edit', compact('product', 'categories', 'statuses', 'types', 'configurable_attributes', 'weightUnits'));
     }
 
     private function _updateProductVariants($request)
@@ -180,22 +181,53 @@ class ProductController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(ProductRequest $request, Product $product)
+    public function store(Request $request)
     {
-        $saved = false;
+        $product = DB::transaction(
+            function () use ($request) {
+                $categoryIds = !empty($request['category_id']) ? $request['category_id'] : [];
+
+                // Create the product with the input data
+                $product = Product::create($request->all() + [
+                    'user_id' => auth()->id(),
+                ]);
+
+                $product->categories()->sync($categoryIds);
+
+                if ($request['type'] == 'configurable') {
+                    $this->_generateProductVariants($product, $request);
+                } else {
+                    ProductInventory::create(['product_id' => $product->id, 'qty' => $request['qty']]);
+                }
+
+                return $product;
+            }
+        );
+
+        return redirect()->route('admin.products.edit', $product)->with([
+            'message' => 'Berhasil di buat !',
+            'alert-type' => 'success'
+        ]);
+    }
+
+    public function update(Request $request, Product $product)
+    {
         $saved = DB::transaction(
             function () use ($product, $request) {
                 $categoryIds = !empty($request['category_id']) ? $request['category_id'] : [];
-                $product->update($request->validated());
+
+                // Update the product with the input data
+                $product->update($request->all());
+
                 $product->categories()->sync($categoryIds);
 
                 if ($product->type == 'configurable') {
                     $this->_updateProductVariants($request);
                 } else {
-                    ProductInventory::updateOrCreate(['product_id' => $product->id], ['qty' => $request['qty']]);
+                    ProductInventory::updateOrCreate(
+                        ['product_id' => $product->id],
+                        ['qty' => $request['qty']]
+                    );
                 }
 
                 return true;

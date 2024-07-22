@@ -8,11 +8,11 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Product extends Model
 {
-    use HasFactory, Sluggable;
+	use HasFactory, Sluggable;
 
-    protected $guarded = ['id', 'created_at', 'updated_at'];
+	protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    public const DRAFT = 0;
+	public const DRAFT = 0;
 	public const ACTIVE = 1;
 	public const INACTIVE = 2;
 
@@ -28,35 +28,29 @@ class Product extends Model
 		self::SIMPLE => 'Simple',
 		self::CONFIGURABLE => 'Configurable',
 	];
-	
-	/**
-     * Return the sluggable configuration array for this model.
-     *
-     * @return array
-     */
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => 'name',
-                'onUpdate' => true
-            ]
-        ];
-    }
-    
-    public static function statuses()
+
+	public function sluggable(): array
+	{
+		return [
+			'slug' => [
+				'source' => 'name',
+				'onUpdate' => true
+			]
+		];
+	}
+
+	public static function statuses()
 	{
 		return self::STATUSES;
 	}
-	
+
 	public function statusLabel()
 	{
 		$statuses = $this->statuses();
-		
 		return isset($this->status) ? $statuses[$this->status] : null;
 	}
-    
-    public static function types()
+
+	public static function types()
 	{
 		return self::TYPES;
 	}
@@ -73,7 +67,7 @@ class Product extends Model
 
 	public function productInventory()
 	{
-		return $this->hasOne(productInventory::class);
+		return $this->hasOne(ProductInventory::class);
 	}
 
 	public function productImages()
@@ -83,8 +77,7 @@ class Product extends Model
 
 	public function scopeActive($query)
 	{
-		return $query->where('status', 1)
-			->where('parent_id', null);
+		return $query->where('status', 1)->where('parent_id', null);
 	}
 
 	public function scopePopular($query, $limit = 10)
@@ -95,7 +88,7 @@ class Product extends Model
 			->join('order_items', 'order_items.product_id', '=', 'products.id')
 			->join('orders', 'order_items.order_id', '=', 'orders.id')
 			->whereRaw(
-				'orders.status = :order_satus AND MONTH(orders.order_date) = :month',
+				'orders.status = :order_status AND MONTH(orders.order_date) = :month',
 				[
 					'order_status' => Order::COMPLETED,
 					'month' => $month
@@ -113,7 +106,7 @@ class Product extends Model
 
 	public function configurable()
 	{
-		return $this->type == 'configurable';
+		return $this->type == self::CONFIGURABLE;
 	}
 
 	public function parent()
@@ -124,5 +117,19 @@ class Product extends Model
 	public function productAttributeValues()
 	{
 		return $this->hasMany(ProductAttributeValue::class, 'parent_product_id');
+	}
+
+	public function weightUnit()
+	{
+		return $this->belongsTo(WeightUnit::class);
+	}
+
+	public function getWeightWithUnitAttribute()
+	{
+		return $this->weight . ' ' . ($this->weightUnit ? $this->weightUnit->name : '');
+	}
+	public function getActualWeightAttribute()
+	{
+		return $this->weight * ($this->weightUnit ? $this->weightUnit->weight : 1);
 	}
 }

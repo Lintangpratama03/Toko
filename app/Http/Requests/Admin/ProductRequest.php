@@ -22,52 +22,52 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         switch ($this->method()) {
-            case 'POST':
-            {
-                return [
-                    'type' => 'required',
-                    'price' => 'numeric',
-                    'qty' => 'numeric',
-                    'weight' => 'numeric',
-                    'status' => 'nullable',
-                    'name' => ['required', 'max:255', 'unique:products,name'],
-                    'sku' => ['required', 'max:255', 'unique:products,sku'],
-                ];
-            }
-            case 'PUT':
-            case 'PATCH':
-            {
-                if ($this->get('type') == 'simple') {
-                    return [
-                        'type' => 'required',
-                        'price' => ['required', 'numeric'],
-                        'qty' => ['required', 'numeric'],
-                        'weight' => ['required', 'numeric'],
-                        'height' => 'nullable|numeric',
-                        'width' => 'nullable|numeric',
-                        'length' => 'nullable|numeric',
-                        'status' => 'required',
-                        'short_description' => 'required',
-                        'description' => 'required',
-                        'name' => ['required', 'max:255', 'unique:products,name,'.$this->route()->product->id],
-                        'sku' => ['required', 'max:255', 'unique:products,sku,'. $this->route()->product->id],   
-                    ];
-                }else {
+            case 'POST': {
                     return [
                         'type' => 'required',
                         'price' => 'numeric',
                         'qty' => 'numeric',
                         'weight' => 'numeric',
-                        'status' => 'required',
-                        'short_description' => 'required',
-                        'description' => 'required',
-                        'name' => ['required', 'max:255', 'unique:products,name,'. $this->route()->product->id],
-                        'sku' => ['required', 'max:255', 'unique:products,sku,'. $this->route()->product->id],   
+                        'status' => 'nullable',
+                        'name' => ['required', 'max:255', 'unique:products,name'],
+                        'sku' => ['required', 'max:255', 'unique:products,sku'],
+                        'weight' => 'required|numeric|min:0',
+                        'weight_unit_id' => 'required|exists:weight_units,id',
                     ];
                 }
-                
-            }
-            default: break;
+            case 'PUT':
+            case 'PATCH': {
+                    if ($this->get('type') == 'simple') {
+                        return [
+                            'type' => 'required',
+                            'price' => ['required', 'numeric'],
+                            'qty' => ['required', 'numeric'],
+                            'weight' => ['required', 'numeric'],
+                            'height' => 'nullable|numeric',
+                            'width' => 'nullable|numeric',
+                            'length' => 'nullable|numeric',
+                            'status' => 'required',
+                            'short_description' => 'required',
+                            'description' => 'required',
+                            'name' => ['required', 'max:255', 'unique:products,name,' . $this->route()->product->id],
+                            'sku' => ['required', 'max:255', 'unique:products,sku,' . $this->route()->product->id],
+                        ];
+                    } else {
+                        return [
+                            'type' => 'required',
+                            'price' => 'numeric',
+                            'qty' => 'numeric',
+                            'weight' => 'numeric',
+                            'status' => 'required',
+                            'short_description' => 'required',
+                            'description' => 'required',
+                            'name' => ['required', 'max:255', 'unique:products,name,' . $this->route()->product->id],
+                            'sku' => ['required', 'max:255', 'unique:products,sku,' . $this->route()->product->id],
+                        ];
+                    }
+                }
+            default:
+                break;
         }
     }
 }
