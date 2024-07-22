@@ -43,7 +43,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-circle nav-icon"></i>
                         <p>
-                            Managemen Produk
+                            Kelola Produk
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -66,7 +66,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-circle nav-icon"></i>
                         <p>
-                            Managemen Order
+                            Kelola Pesanan
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -74,7 +74,7 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.orders.index') }}" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
-                                <p>Order</p>
+                                <p>Pesanan</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -85,47 +85,13 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-circle nav-icon"></i>
-                        <p>
-                            Managemen Report
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview" style="display: none;">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.reports.revenue') }}" class="nav-link">
-                                <i class="fa fa-plus nav-icon"></i>
-                                <p>Keuntungan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.reports.product') }}" class="nav-link">
-                                <i class="fa fa-plus nav-icon"></i>
-                                <p>Produk</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.reports.inventory') }}" class="nav-link">
-                                <i class="fa fa-plus nav-icon"></i>
-                                <p>Inventory</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.reports.payment') }}" class="nav-link">
-                                <i class="fa fa-plus nav-icon"></i>
-                                <p>Payment</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+              
             @elseif(auth()->user()->is_warehouse)
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-circle nav-icon"></i>
                         <p>
-                            Managemen Produk
+                            Kelola Produk
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -134,6 +100,41 @@
                             <a href="{{ route('gudang.products.index') }}" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
                                 <p>Produk</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li> -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-circle nav-icon"></i>
+                        <p>
+                            Kelola Laporan
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="{{ route('gudang.reports.revenue') }}" class="nav-link">
+                                <i class="fa fa-plus nav-icon"></i>
+                                <p>Keuntungan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('gudang.reports.product') }}" class="nav-link">
+                                <i class="fa fa-plus nav-icon"></i>
+                                <p>Produk</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('gudang.reports.inventory') }}" class="nav-link">
+                                <i class="fa fa-plus nav-icon"></i>
+                                <p>Inventori</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('gudang.reports.payment') }}" class="nav-link">
+                                <i class="fa fa-plus nav-icon"></i>
+                                <p>Payment</p>
                             </a>
                         </li>
                     </ul>

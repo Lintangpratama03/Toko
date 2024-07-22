@@ -4,10 +4,10 @@
 	<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: url({{ asset('themes/ezone/assets/img/bg/breadcrumb.jpg') }})">
 		<div class="container-fluid">
 			<div class="breadcrumb-content text-center">
-				<h2>My Order</h2>
+				<h2>Pesanan Saya</h2>
 				<ul>
 					<li><a href="{{ url('/') }}">home</a></li>
-					<li>my order</li>
+					<li>Pesanan Saya</li>
 				</ul>
 			</div>
 		</div>
@@ -23,12 +23,12 @@
 						<div class="table-content table-responsive">
 							<table class="table table-bordered table-striped">
 								<thead>
-									<th>Order ID</th>
-									<th>Grand Total</th>
+									<th> id pesanan</th>
+									<th>Jumlah Total</th>
 									<th>Nomer Resi</th>
 									<th>Status</th>
-									<th>Payment</th>
-									<th>Action</th>
+									<th>Pembayaran</th>
+									<th>Aksi</th>
 								</thead>
 								<tbody>
 									@forelse($orders as $order)
@@ -47,7 +47,7 @@
 										</tr>
 									@empty
 										<tr>
-											<td colspan="5">No records found</td>
+											<td colspan="5">tidak ada catatan ditemukan</td>
 										</tr>
 									@endforelse
 								</tbody>

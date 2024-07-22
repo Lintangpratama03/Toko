@@ -2,15 +2,15 @@
 
 @section('content')
     <!-- header end -->
-    <div class="breadcrumb-area pt-205 breadcrumb-padding pb-210"
+    <!-- <div class="breadcrumb-area pt-205 breadcrumb-padding pb-210"
         style="background-image: url({{ asset('themes/ezone/assets/img/bg/breadcrumb.jpg') }})">
-        <div class="container">
+        <div class="container"> -->
             <div class="breadcrumb-content text-center">
-                <h2>Checkout Page</h2>
-                <ul>
+                <h2 style="color:black">Checkout</h2>
+                <!-- <ul>
                     <li><a href="{{ url('/') }}">home</a></li>
-                    <li> Checkout Page</li>
-                </ul>
+                    <li> Checkout</li>
+                </ul> -->
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="checkbox-form">
-                            <h3>Billing Details</h3>
+                            <h3>Detail Pembeli</h3>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="checkout-form-list">
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkout-form-list">
-                                        <label>Address <span class="required">*</span></label>
+                                        <label>Alamat <span class="required">*</span></label>
                                         <input type="text" name="address1"
                                             value="{{ old('address1', auth()->user()->address1) }}">
                                     </div>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list">
-                                        <label>City<span class="required">*</span></label>
+                                        <label>Kota<span class="required">*</span></label>
                                         <select name="shipping_city_id" id="shipping-city">
                                             <option value="">-- Pilih Kota --</option>
                                             @if ($cities)
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list">
-                                        <label>Postcode / Zip <span class="required">*</span></label>
+                                        <label>KodePos <span class="required">*</span></label>
                                         <input type="text" name="postcode"
                                             value="{{ old('postcode', auth()->user()->postcode) }}">
                                     </div>
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list">
-                                        <label>Email Address </label>
+                                        <label> Alamat Email </label>
                                         <input type="text" name="email"
                                             value="{{ old('email', auth()->user()->email) }}">
                                     </div>
@@ -101,8 +101,8 @@
                             <div class="different-address">
                                 <div class="ship-different-title">
                                     <h3>
-                                        <label>Ship to a different address?</label>
-                                        <input id="ship-box" type="checkbox" name="ship_to" />
+                                        <!-- <label>Ship to a different address?</label>
+                                        <input id="ship-box" type="checkbox" name="ship_to" /> -->
                                     </h3>
                                 </div>
                                 <div id="ship-box-info">
@@ -177,7 +177,7 @@
                                 </div>
                                 <div class="order-notes">
                                     <div class="checkout-form-list mrg-nn">
-                                        <label>Order Notes</label>
+                                        <label>Catatan</label>
                                         <input type="text" name="note" value="{{ old('note') }}">
                                     </div>
                                 </div>
@@ -186,12 +186,12 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="your-order">
-                            <h3>Your order</h3>
+                            <h3>Detail Pesanan</h3>
                             <div class="your-order-table table-responsive">
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th class="product-name">Product</th>
+                                            <th class="product-name">Produk</th>
                                             <th class="product-total">Total</th>
                                         </tr>
                                     </thead>
@@ -216,7 +216,7 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="2">The cart is empty! </td>
+                                                <td colspan="2">Keranjang Kosong! </td>
                                             </tr>
                                         @endforelse
                                     </tbody>
@@ -230,13 +230,13 @@
               <td><span class="amount">jnfjk</span></td>
              </tr> -->
                                         <tr class="cart-subtotal">
-                                            <th>Shipping Cost (100 kg)</th>
+                                            <th>Pilih Pengiriman</th>
                                             <td><select id="shipping-cost-option" required name="shipping_service">
 
                                                 </select></td>
                                         </tr>
                                         <tr class="order-total">
-                                            <th>Order Total</th>
+                                            <th>Total Pesanan</th>
                                             <td><strong>Rp<span
                                                         class="total-amount">{{ Cart::subtotal(0, ',', '.') }}</span></strong>
                                             </td>
@@ -250,28 +250,23 @@
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 <h5 class="panel-title"><a data-toggle="collapse" aria-expanded="true"
-                                                        data-parent="#faq" href="#payment-1">Direct Bank Transfer.</a>
+                                                        data-parent="#faq" href="#payment-1"></a>
                                                 </h5>
                                             </div>
                                             <div id="payment-1" class="panel-collapse collapse show">
                                                 <div class="panel-body">
-                                                    <p>Make your payment directly into our bank account. Please use your
-                                                        Order ID as the payment reference. Your order won’t be shipped until
-                                                        the funds have cleared in our account.</p>
+                                                    <p></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 <h5 class="panel-title"><a class="collapsed" data-toggle="collapse"
-                                                        aria-expanded="false" data-parent="#faq" href="#payment-2">Cheque
-                                                        Payment</a></h5>
+                                                        aria-expanded="false" data-parent="#faq" href="#payment-2"></a></h5>
                                             </div>
                                             <div id="payment-2" class="panel-collapse collapse">
                                                 <div class="panel-body">
-                                                    <p>Make your payment directly into our bank account. Please use your
-                                                        Order ID as the payment reference. Your order won’t be shipped until
-                                                        the funds have cleared in our account.</p>
+                                                    <p></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -279,19 +274,17 @@
                                             <div class="panel-heading">
                                                 <h5 class="panel-title"><a class="collapsed" data-toggle="collapse"
                                                         aria-expanded="false" data-parent="#faq"
-                                                        href="#payment-3">PayPal</a></h5>
+                                                        href="#payment-3"></a></h5>
                                             </div>
                                             <div id="payment-3" class="panel-collapse collapse">
                                                 <div class="panel-body">
-                                                    <p>Make your payment directly into our bank account. Please use your
-                                                        Order ID as the payment reference. Your order won’t be shipped until
-                                                        the funds have cleared in our account.</p>
+                                                    <p></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="order-button-payment">
-                                        <input type="submit" value="Place order" />
+                                        <input type="submit" value="order" />
                                     </div>
                                 </div>
                             </div>

@@ -9,7 +9,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Data Produk</h3>
+                            <h3 class="card-title">Data Stok Produk</h3>
                             <a href="{{ route('gudang.products.create') }}" class="btn btn-success shadow-sm float-right"> <i
                                     class="fa fa-plus"></i> Tambah </a>
                         </div>
@@ -25,7 +25,7 @@
                                             <th>Nama Produk</th>
                                             <th>Harga</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>

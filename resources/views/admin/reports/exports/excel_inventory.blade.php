@@ -1,9 +1,9 @@
 <table>
 	<thead>
 		<tr>
-		<th>Name</th>
+		<th>Nama</th>
 		<th>SKU</th>
-		<th>Stock</th>
+		<th>Stok</th>
 		</tr>
 	</thead>
 	<tbody>

@@ -6,18 +6,18 @@
 			<div class="col-lg-12">
 				<div class="card card-default">
 					<div class="card-header card-header-border-bottom">
-						<h2>Payment Report</h2>
+						<h2>Laporan Pembayaran</h2>
 					</div>
 					<div class="card-body">
 						@include('admin.reports.filter')
 						<table class="table table-bordered table-striped">
 							<thead>
-								<th>Order ID</th>
-								<th>Date</th>
+								<th>Id Pesanan</th>
+								<th>Tanggal</th>
 								<th>Status</th>
-								<th>Amount</th>
+								<th>Jumlah</th>
 								<th>Gateway</th>
-								<th>Payment Type</th>
+								<th>Tipe Payment</th>
 								<th>Ref</th>
 							</thead>
 							<tbody>

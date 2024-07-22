@@ -6,18 +6,18 @@
 			<div class="col-lg-12">
 				<div class="card card-default">
 					<div class="card-header card-header-border-bottom">
-						<h2>Product Report</h2>
+						<h2>Laporan Penjualan Produk</h2>
 					</div>
 					<div class="card-body">
 						@include('admin.reports.filter')
 						<table id="data-table" class="table table-bordered table-striped">
 							<thead>
-								<th>Name</th>
+								<th>Nama</th>
 								<th>SKU</th>
-								<th>Items Sold</th>
-								<th>Net Revenue</th>
-								<th>Orders</th>
-								<th>Stock</th>
+								<th>Produk Terjual</th>
+								<th>Pendapatan Bersih</th>
+								<th>Pesanan</th>
+								<th>Stok</th>
 							</thead>
 							<tbody>
 								@php

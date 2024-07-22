@@ -25,7 +25,7 @@
                                             <th>Nama Produk</th>
                                             <th>Harga</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -44,7 +44,7 @@
                                                                 class="btn btn-sm btn-primary">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
-                                                            <form onclick="return confirm('are you sure !')"
+                                                            <form onclick="return confirm('apa anda yakin!')"
                                                                 action="{{ route('admin.products.destroy', $product) }}"
                                                                 method="POST">
                                                                 @csrf

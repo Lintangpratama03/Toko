@@ -22,7 +22,7 @@
                         <th>No</th>
                         <th>Nama Kategori</th>
                         <th>Nama Kategori Utama</th>
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -40,7 +40,7 @@
                                     <a href="{{ route('admin.categories.edit', $category) }}" class="btn btn-sm btn-primary">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <form onclick="return confirm('are you sure !')" action="{{ route('admin.categories.destroy', $category) }}"
+                                    <form onclick="return confirm('apa anda yakin!')" action="{{ route('admin.categories.destroy', $category) }}"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')

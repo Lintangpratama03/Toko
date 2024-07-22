@@ -10,7 +10,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Buat Produk</h3>
+                <h3 class="card-title">Tambah Produk</h3>
                 <a href="{{ route('admin.products.index')}}" class="btn btn-success shadow-sm float-right"> <i class="fa fa-arrow-left"></i> Kembali</a>
               </div>
               <!-- /.card-header -->

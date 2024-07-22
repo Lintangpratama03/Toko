@@ -2,7 +2,7 @@
 <html>
   	<head>
 		<meta charset="utf-8">
-		<title>Payment Report</title>
+		<title>Laporan Payment</title>
 		<style type="text/css">
 			table {
 				width: 100%;
@@ -34,12 +34,12 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Order ID</th>
-					<th>Date</th>
+					<th>Id Pesanan</th>
+					<th>Tanggal</th>
 					<th>Status</th>
-					<th>Amount</th>
+					<th>Jumlah</th>
 					<th>Gateway</th>
-					<th>Payment Type</th>
+					<th>Tipe Payment</th>
 					<th>Ref</th>
 				</tr>
 			</thead>
