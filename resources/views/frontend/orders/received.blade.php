@@ -5,10 +5,10 @@
 	<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: url({{ asset('themes/ezone/assets/img/bg/breadcrumb.jpg') }})">
 		<div class="container">
 			<div class="breadcrumb-content text-center">
-				<h2>Order Received</h2>
+				<h2>Pesanan Diterima</h2>
 				<ul>
 					<li><a href="{{ url('/') }}">home</a></li>
-					<li>Order Received</li>
+					<li>Pesanan Diterima</li>
 				</ul>
 			</div>
 		</div>
@@ -30,10 +30,10 @@
                         </div><!-- /.container-fluid -->
                     </div>
                 @endif
-					<h1 class="cart-heading">Your Order:</h4>
+					<h1 class="cart-heading">Pesanan Anda:</h4>
 					<div class="row">
 						<div class="col-xl-3 col-lg-4">
-							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Billing Address</p>
+							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Alamat Penagihan</p>
 							<address>
 								{{ $order->customer_first_name }} {{ $order->customer_last_name }}
 								<br> {{ $order->customer_address1 }}
@@ -44,7 +44,7 @@
 							</address>
 						</div>
 						<div class="col-xl-3 col-lg-4">
-							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Shipment Address</p>
+							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Alamat Pengiriman</p>
 							<address>
 								{{ $order->shipment->first_name }} {{ $order->shipment->last_name }}
 								<br> {{ $order->shipment->address1 }}
@@ -55,7 +55,7 @@
 							</address>
 						</div>
 						<div class="col-xl-3 col-lg-4">
-							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Details</p>
+							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Detail</p>
 							<address>
 								Invoice ID:
 								<span class="text-dark">#{{ $order->code }}</span>
@@ -71,10 +71,10 @@
 							<thead>
 								<tr>
 									<th>#</th>
-									<th>Item</th>
-									<th>Description</th>
-									<th>Quantity</th>
-									<th>Unit Cost</th>
+									<th>Produk</th>
+									<th>Deskripsi</th>
+									<th>Kantitas</th>
+									<th>Harga</th>
 									<th>Total</th>
 								</tr>
 							</thead>
@@ -112,7 +112,7 @@
 									</tr>
 								@empty
 									<tr>
-										<td colspan="6">Order item not found!</td>
+										<td colspan="6">Pesanan Tidak Ada!</td>
 									</tr>
 								@endforelse
 							</tbody>
@@ -125,10 +125,10 @@
 									<li> Subtotal
 										<span>Rp{{ number_format($order->base_total_price, 0 ,",", ".") }}</span>
 									</li>
-									<li>Tax (10%)
+									<li>Pajak
 										<span>Rp{{ number_format($order->tax_amount,0,",",".") }}</span>
 									</li>
-									<li>Shipping Cost
+									<li>Biaya Pengiriman
 										<span>Rp{{ number_format($order->shipping_cost,0,",",".") }}</span>
 									</li>
 									<li>Total
@@ -136,7 +136,7 @@
 									</li>
 								</ul>
 								@if (!$order->isPaid())
-									<a href="{{ $order->payment_url }}">Proceed to payment</a>
+									<a href="{{ $order->payment_url }}">Proses Pembayaran</a>
 								@endif
 							</div>
 						</div>

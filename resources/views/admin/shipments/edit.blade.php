@@ -6,7 +6,7 @@
 		<div class="col-lg-6">
 			<div class="card card-default">
 				<div class="card-header card-header-border-bottom">
-					<h2>Order Shipment #{{ $shipment->order->code }}</h2>
+					<h2>Pengiriman Pesanan #{{ $shipment->order->code }}</h2>
 				</div>
 				<div class="card-body">
                     <form action="{{ route('admin.shipments.update', $shipment) }}" method="POST">
@@ -27,23 +27,23 @@
 		<div class="col-lg-6">
 			<div class="card card-default">
 				<div class="card-header card-header-border-bottom">
-					<h2>Detail Order</h2>
+					<h2>Detail Pesanan</h2>
 				</div>
 				<div class="card-body">
 					<div class="row mb-2">
 						<div class="col-xl-6 col-lg-6">
-							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Billing Address</p>
+							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Alamat Penagihan</p>
 							<address>
 								{{ $shipment->order->customer_first_name }} {{ $shipment->order->customer_last_name }}
 								{{ $shipment->order->customer_address1 }}
 								{{ $shipment->order->customer_address2 }}
 								<br> Email: {{ $shipment->order->customer_email }}
 								<br> Phone: {{ $shipment->order->customer_phone }}
-								<br> Postcode: {{ $shipment->order->customer_postcode }}
+								<br> Kodepos: {{ $shipment->order->customer_postcode }}
 							</address>
 						</div>
 						<div class="col-xl-6 col-lg-6">
-							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Details</p>
+							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Detail</p>
 							<address>
 								ID: <span class="text-dark">#{{ $shipment->order->code }}</span>
 								<br> {{ $shipment->order->order_date }}
@@ -58,8 +58,8 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Item</th>
-                                    <th>Qty</th>
+                                    <th>Produk</th>
+                                    <th>Kuantitas</th>
                                     <th>Total</th>
                                 </tr>
                             </thead>
@@ -73,7 +73,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6">Order item not found!</td>
+                                        <td colspan="6">Pesanan Tidak Ada!</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -85,10 +85,10 @@
 								<li class="mid pb-3 text-dark">Subtotal
 									<span class="d-inline-block float-right text-default">{{ $shipment->order->base_total_price }}</span>
 								</li>
-								<li class="mid pb-3 text-dark">Tax(10%)
+								<li class="mid pb-3 text-dark">Pajak
 									<span class="d-inline-block float-right text-default">{{ $shipment->order->tax_amount }}</span>
 								</li>
-								<li class="mid pb-3 text-dark">Shipping Cost
+								<li class="mid pb-3 text-dark">Biaya Pengiriman
 									<span class="d-inline-block float-right text-default">{{ $shipment->order->shipping_cost }}</span>
 								</li>
 								<li class="pb-3 text-dark">Total

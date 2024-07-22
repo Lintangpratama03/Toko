@@ -1,12 +1,12 @@
 <table>
 	<thead>
 		<tr>
-		<th>Name</th>
+		<th>Nama</th>
 		<th>SKU</th>
-		<th>Items Sold</th>
-		<th>Net Revenue</th>
-		<th>Orders</th>
-		<th>Stock</th>
+		<th>Produk Terjual</th>
+		<th>Pendapatan Bersih</th>
+		<th>Pesanan</th>
+		<th>Stok</th>
 		</tr>
 	</thead>
 	<tbody>

@@ -6,18 +6,18 @@
             <div class="col-lg-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Trashed Orders</h2>
+                        <h2>Pesanan Yang Dihapus</h2>
                         <a href="{{ route('admin.orders.index')}}" class="btn btn-success shadow-sm float-right"> Kembali </a>
                     </div>
                     <div class="card-body">
                         <table id="data-table" class="table table-bordered table-striped">
                             <thead>
-                                <th>Order ID</th>
-                                <th>Grand Total</th>
-                                <th>Name</th>
+                                <th>Id Pesanan</th>
+                                <th>Jumlah Total</th>
+                                <th>Nama</th>
                                 <th>Status</th>
-                                <th>Payment</th>
-                                <th>Action</th>
+                                <th>Pembayaran</th>
+                                <th>Aksi</th>
                             </thead>
                             <tbody>
                                 @forelse ($orders as $order)
@@ -39,7 +39,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6">No records found</td>
+                                        <td colspan="6">TIdak Ada Catatan</td>
                                     </tr>
                                 @endforelse
                             </tbody>

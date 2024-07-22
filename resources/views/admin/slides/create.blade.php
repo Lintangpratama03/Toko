@@ -18,7 +18,7 @@
                 <form method="post" action="{{ route('admin.slides.store') }}" enctype="multipart/form-data">
                     @csrf 
                     <div class="form-group row border-bottom pb-4">
-                        <label for="title" class="col-sm-2 col-form-label">Title</label>
+                        <label for="title" class="col-sm-2 col-form-label">Judul</label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control" name="title" value="{{ old('title') }}" id="title">
                         </div>

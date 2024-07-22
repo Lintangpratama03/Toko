@@ -111,7 +111,7 @@
                         </form>
 						<div class="product-details-cati-tag mt-35">
 							<ul>
-								<li class="categories-title">Categories :</li>
+								<li class="categories-title">Kategori :</li>
 								@foreach ($product->categories as $category)
 									<li><a href="{{ url('products/category/'. $category->slug ) }}">{{ $category->name }}</a></li>
 								@endforeach
@@ -129,7 +129,7 @@
 			<div class="product-description-review text-center">
 				<div class="description-review-title nav" role=tablist>
 					<a class="active" href="#pro-dec" data-toggle="tab" role="tab" aria-selected="true">
-						Description
+						Deskripsi
 					</a>
 				</div>
 				<div class="description-review-text tab-content">
@@ -137,7 +137,7 @@
 						<p>{{ $product->description }} </p>
 					</div>
 					<div class="tab-pane fade" id="pro-review" role="tabpanel">
-						<a href="#">Be the first to write your review!</a>
+						<a href="#"></a>
 					</div>
 				</div>
 			</div>

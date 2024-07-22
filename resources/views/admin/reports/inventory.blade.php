@@ -6,7 +6,7 @@
 			<div class="col-lg-12">
 				<div class="card card-default">
 					<div class="card-header card-header-border-bottom">
-						<h2>Inventory Report</h2>
+						<h2>laporan inventori</h2>
 					</div>
 					<div class="card-body">
                         <form action="{{ url()->current() }}" method="get" class="form-inline">
@@ -24,9 +24,9 @@
                         </form>
 						<table id="data-table" class="table table-bordered table-striped">
 							<thead>
-								<th>Name</th>
+								<th>Nama</th>
 								<th>SKU</th>
-								<th>Stock</th>
+								<th>Stok</th>
 							</thead>
 							<tbody>
 								@forelse ($products as $product)
@@ -37,7 +37,7 @@
 									</tr>
 								@empty
 									<tr>
-										<td colspan="3">No records found</td>
+										<td colspan="3">tidak ada catatan yang ditemukan</td>
 									</tr>
 								@endforelse
 							</tbody>

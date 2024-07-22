@@ -10,19 +10,18 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Order</h3>
+                <h3 class="card-title">Data Pengiriman</h3>
               </div>
-              <!-- /.card-header -->
               <div class="card-body">
                 <div class="table-responsive">
                 <table id="data-table" class="table table-bordered table-striped">
                             <thead>
-                                <th>Order ID</th>
-                                <th>Name</th>
+                                <th>Id Pesanan</th>
+                                <th>Nama</th>
                                 <th>Status</th>
-                                <th>Total Qty</th>
-                                <th>Total Weight (gram)</th>
-                                <th>Action</th>
+                                <th>Total Terjual</th>
+                                <th>Berat (KG)</th>
+                                <th>Aksi</th>
                             </thead>
                             <tbody>
                                 @forelse ($shipments as $shipment)

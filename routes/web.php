@@ -41,10 +41,7 @@ Route::group(['middleware' => ['auth', 'is_admin'], 'prefix' => 'admin', 'as' =>
     Route::put('orders/cancel/{order:id}', [\App\Http\Controllers\Admin\OrderController::class, 'doCancel'])->name('orders.cancel');
     Route::resource('shipments', \App\Http\Controllers\Admin\ShipmentController::class);
 
-    Route::get('reports/revenue', [\App\Http\Controllers\Admin\ReportController::class, 'revenue'])->name('reports.revenue');
-    Route::get('reports/product', [\App\Http\Controllers\Admin\ReportController::class, 'product'])->name('reports.product');
-    Route::get('reports/inventory', [\App\Http\Controllers\Admin\ReportController::class, 'inventory'])->name('reports.inventory');
-    Route::get('reports/payment', [\App\Http\Controllers\Admin\ReportController::class, 'payment'])->name('reports.payment');
+   
 });
 
 
@@ -80,8 +77,13 @@ Route::get('payments/failed', [\App\Http\Controllers\Frontend\PaymentController:
 Route::get('payments/unfinish', [\App\Http\Controllers\Frontend\PaymentController::class, 'unfinish']);
 
 Route::group(['middleware' => ['auth', 'is_warehouse'], 'prefix' => 'gudang', 'as' => 'gudang.'], function () {
-    // admin
+    // owner
     Route::get('dashboard', [\App\Http\Controllers\Gudang\DashboardGudangController::class, 'index'])->name('dashboard');
     Route::resource('categories', \App\Http\Controllers\Gudang\CategoryGudangController::class);
     Route::resource('products', \App\Http\Controllers\Gudang\ProductGudangController::class);
+
+    Route::get('reports/revenue', [\App\Http\Controllers\Admin\ReportController::class, 'revenue'])->name('reports.revenue');
+    Route::get('reports/product', [\App\Http\Controllers\Admin\ReportController::class, 'product'])->name('reports.product');
+    Route::get('reports/inventory', [\App\Http\Controllers\Admin\ReportController::class, 'inventory'])->name('reports.inventory');
+    Route::get('reports/payment', [\App\Http\Controllers\Admin\ReportController::class, 'payment'])->name('reports.payment');
 });

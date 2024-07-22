@@ -10,14 +10,14 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Order</h3>
-                <a href="{{ route('admin.orders.trashed')}}" class="btn btn-danger shadow-sm float-right"> <i class="fa fa-trash"></i> Trash </a>
+                <h3 class="card-title">Data Pesanan</h3>
+                <a href="{{ route('admin.orders.trashed')}}" class="btn btn-danger shadow-sm float-right"> <i class="fa fa-trash"></i> Sampah </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
               <form action="" class="input-daterange form-inline mb-4">
                 <div class="form-group mb-2">
-                  <input type="text" class="form-control input-block" name="q" value="{{ !empty(request()->input('q')) ? request()->input('q') : '' }}" placeholder="Type code or name"> 
+                  <input type="text" class="form-control input-block" name="q" value="{{ !empty(request()->input('q')) ? request()->input('q') : '' }}" placeholder=""> 
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
                   <input type="text" class="form-control datepicker" readonly="" value="{{ !empty(request()->input('start')) ? request()->input('start') : '' }}" name="start" placeholder="from">
@@ -39,12 +39,12 @@
                 <div class="table-responsive">
                     <table id="data-table" class="table table-bordered table-striped">
                         <thead>
-                            <th>Order ID</th>
-                            <th>Grand Total</th>
-                            <th>Name</th>
+                            <th>Id Pesanan</th>
+                            <th>Total Keseluruhan</th>
+                            <th>Nama</th>
                             <th>Status</th>
-                            <th>Payment</th>
-                            <th>Action</th>
+                            <th>Pembayaran</th>
+                            <th>Aksi</th>
                         </thead>
                         <tbody>
                             @forelse ($orders as $order)
@@ -74,7 +74,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6">No records found</td>
+                                    <td colspan="6">Tidak ada catatan yang ditemukan</td>
                                 </tr>
                             @endforelse
                         </tbody>

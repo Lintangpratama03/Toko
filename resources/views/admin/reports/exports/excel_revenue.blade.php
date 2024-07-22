@@ -1,12 +1,12 @@
 <table>
 	<thead>
 		<tr>
-			<th>Date</th>
-			<th>Orders</th>
-			<th>Gross Revenue</th>
-			<th>Taxes</th>
-			<th>Shipping</th>
-			<th>Net Revenue</th>
+			<th>Tanggal</th>
+			<th>Pesanan</th>
+			<th>Pendapatan Kotor</th>
+			<th>Pajak</th>
+			<th>Pengiriman</th>
+			<th>Pendapatan Bersih</th>
 		</tr>
 	</thead>
 	<tbody>

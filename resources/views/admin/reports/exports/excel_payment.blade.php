@@ -1,12 +1,12 @@
 <table>
 	<thead>
 		<tr>
-			<th>Order ID</th>
-			<th>Date</th>
+			<th>Id Pesanan</th>
+			<th>Tanggal</th>
 			<th>Status</th>
-			<th>Amount</th>
+			<th>Jumlah</th>
 			<th>Gateway</th>
-			<th>Payment Type</th>
+			<th>Tipe Payment</th>
 			<th>Ref token</th>
 		</tr>
 	</thead>

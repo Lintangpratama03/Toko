@@ -103,7 +103,7 @@
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
         <div class="p-3">
-            <h5>Title</h5>
+            <h5>SinarJaya</h5>
             <p>Sidebar content</p>
         </div>
     </aside>
@@ -113,7 +113,7 @@
     <footer class="main-footer">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
-            Anything you want
+            
         </div>
         <!-- Default to the left -->
         <strong>Copyright &copy; 2024 <a>SinarJaya</a>.</strong> All rights reserved.
