@@ -196,8 +196,6 @@ class ProductController extends Controller
 
                 if ($request['type'] == 'configurable') {
                     $this->_generateProductVariants($product, $request);
-                } else {
-                    ProductInventory::create(['product_id' => $product->id, 'qty' => $request['qty']]);
                 }
 
                 return $product;

@@ -19,7 +19,7 @@
                             <form method="post" action="{{ route('admin.products.store') }}">
                                 @csrf
                                 <div class="form-group row border-bottom pb-4">
-                                    <label for="type" class="col-sm-2 col-form-label">Tipe Kategori</label>
+                                    {{-- <label for="type" class="col-sm-2 col-form-label">Tipe Kategori</label> --}}
                                     <div class="col-sm-10">
                                         <!-- Hidden select input -->
                                         <select class="form-control product-type d-none" name="type" id="type">
@@ -30,8 +30,8 @@
                                         </select>
 
                                         <!-- Visible display of the selected type (optional) -->
-                                        <input type="text" class="form-control"
-                                            value="{{ $types[old('type', key($types))] }}" readonly>
+                                        {{-- <input type="text" class="form-control"
+                                            value="{{ $types[old('type', key($types))] }}" readonly> --}}
                                     </div>
                                 </div>
 
